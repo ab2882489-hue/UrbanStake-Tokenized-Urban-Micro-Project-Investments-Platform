@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details | UrbanStake</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-city"></i>
+                <span>UrbanStake</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="marketplace.html" class="nav-link">Marketplace</a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="analytics.html" class="nav-link">Analytics</a>
+                <button class="btn btn-outline" id="connectWallet">Connect Wallet</button>
+                <div class="user-menu">
+                    <span class="user-avatar">U</span>
+                    <span class="user-name">User123</span>
+                </div>
+            </div>
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Project Details -->
+    <section class="section project-details-section">
+        <div class="container">
+            <div class="back-link">
+                <a href="marketplace.html"><i class="fas fa-arrow-left"></i> Back to Marketplace</a>
+            </div>
+            
+            <div class="project-details-container" id="projectDetails">
+                <!-- Project details will be loaded by JavaScript -->
+                <div class="loading">
+                    <i class="fas fa-spinner fa-spin"></i> Loading project details...
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Similar Projects -->
+    <section class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Similar Projects</h2>
+            <div class="projects-grid" id="similarProjects">
+                <!-- Similar projects will be loaded by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <i class="fas fa-city"></i>
+                        <span>UrbanStake</span>
+                    </a>
+                    <p>Democratizing urban development through tokenized micro-project investments.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Platform</h4>
+                        <a href="marketplace.html">Marketplace</a>
+                        <a href="dashboard.html">Dashboard</a>
+                        <a href="analytics.html">Analytics</a>
+                        <a href="#">How It Works</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Resources</h4>
+                        <a href="#">Documentation</a>
+                        <a href="#">Blog</a>
+                        <a href="#">FAQ</a>
+                        <a href="#">Support</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <a href="#">Terms of Service</a>
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Risk Disclosure</a>
+                        <a href="#">Token Agreement</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 UrbanStake. All rights reserved. This is a demo project for hackathon presentation.</p>
+                <p class="disclaimer">UrbanStake is a demonstration platform. Investments shown are simulated and for presentation purposes only.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Investment Modal -->
+    <div class="modal" id="investmentModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Invest in Project</h3>
+                <button class="modal-close" id="modalClose">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="investment-summary" id="investmentSummary">
+                    <!-- Investment summary will be populated by JavaScript -->
+                </div>
+                <div class="investment-form">
+                    <div class="form-group">
+                        <label for="tokenAmount">Number of Tokens to Purchase</label>
+                        <div class="input-with-slider">
+                            <input type="number" id="tokenAmount" min="1" value="10">
+                            <div class="slider-container">
+                                <input type="range" id="tokenSlider" min="1" max="100" value="10">
+                                <div class="slider-labels">
+                                    <span>1</span>
+                                    <span>100</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="token-presets">
+                            <button class="preset-btn" data-amount="5">5 Tokens</button>
+                            <button class="preset-btn" data-amount="10">10 Tokens</button>
+                            <button class="preset-btn" data-amount="25">25 Tokens</button>
+                            <button class="preset-btn" data-amount="50">50 Tokens</button>
+                        </div>
+                    </div>
+                    <div class="investment-calculator">
+                        <div class="calculator-row">
+                            <span>Token Price</span>
+                            <span id="modalTokenPrice">$25</span>
+                        </div>
+                        <div class="calculator-row">
+                            <span>Token Amount</span>
+                            <span id="modalTokenAmount">10</span>
+                        </div>
+                        <div class="calculator-row total">
+                            <span>Total Investment</span>
+                            <span id="modalTotalAmount">$250</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="walletSelect">Select Wallet</label>
+                        <select id="walletSelect" class="form-select">
+                            <option value="demo">Demo Wallet (Balance: $5,000)</option>
+                            <option value="metamask">MetaMask</option>
+                            <option value="coinbase">Coinbase Wallet</option>
+                            <option value="walletconnect">WalletConnect</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="cancelInvest">Cancel</button>
+                <button class="btn btn-primary" id="confirmInvest">
+                    <i class="fas fa-check-circle"></i> Confirm Investment
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        // Get project ID from URL
+        function getProjectIdFromUrl() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('id') || '1'; // Default to project 1 if not specified
+        }
+        
+        // Initialize the project details page
+        document.addEventListener('DOMContentLoaded', function() {
+            const projectId = getProjectIdFromUrl();
+            loadProjectDetails(projectId);
+            loadSimilarProjects(projectId);
+            
+            // Setup wallet connection
+            document.getElementById('connectWallet').addEventListener('click', function() {
+                this.textContent = 'Wallet Connected';
+                this.classList.add('connected');
+                showNotification('Wallet connected successfully!', 'success');
+            });
+            
+            // Mobile menu toggle
+            document.getElementById('menuToggle').addEventListener('click', function() {
+                document.querySelector('.nav-links').classList.toggle('active');
+            });
+            
+            // Investment modal functionality
+            setupInvestmentModal();
+        });
+        
+        function loadProjectDetails(projectId) {
+            const container = document.getElementById('projectDetails');
+            if (!container) return;
+            
+            // Find project by ID
+            const project = window.urbanStakeData.projects.find(p => p.id === projectId);
+            
+            if (!project) {
+                container.innerHTML = '<div class="error">Project not found. <a href="marketplace.html">Return to Marketplace</a></div>';
+                return;
+            }
+            
+            // Format date
+            const createdDate = new Date(project.createdAt).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            
+            container.innerHTML = `
+                <div class="project-details-header">
+                    <div class="project-title-section">
+                        <div class="project-category-badge">${project.category}</div>
+                        <h1>${project.title}</h1>
+                        <p class="project-location"><i class="fas fa-map-marker-alt"></i> ${project.location}</p>
+                    </div>
+                    <div class="project-funding-status">
+                        <div class="funding-progress-large">
+                            <div class="progress-info">
+                                <span class="progress-label">Funding Progress</span>
+                                <span class="progress-percent">${project.fundedPercent}%</span>
+                            </div>
+                            <div class="progress-bar large">
+                                <div class="progress-fill" style="width: ${project.fundedPercent}%"></div>
+                            </div>
+                            <div class="progress-stats">
+                                <span>$${project.totalValue.toLocaleString()} goal</span>
+                                <span>$${(project.totalValue * project.fundedPercent / 100).toLocaleString()} raised</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-details-content">
+                    <div class="project-main">
+                        <div class="project-image-placeholder">
+                            <div class="image-overlay">
+                                <span>UrbanStake Project Visualization</span>
+                            </div>
+                        </div>
+                        
+                        <div class="project-description-full">
+                            <h2>Project Description</h2>
+                            <p>${project.description}</p>
+                            <p>This project was launched on ${createdDate} and is expected to be completed within ${project.duration} months. The project has passed all required regulatory approvals and community consultations.</p>
+                            
+                            <h3>Project Highlights</h3>
+                            <ul class="project-highlights">
+                                ${project.highlights.map(highlight => `<li>${highlight}</li>`).join('')}
+                            </ul>
+                        </div>
+                        
+                        <div class="project-team">
+                            <h2>Project Team</h2>
+                            <div class="team-members">
+                                <div class="team-member">
+                                    <div class="member-avatar">JD</div>
+                                    <div class="member-info">
+                                        <h4>Jane Dawson</h4>
+                                        <p>Project Lead & Urban Planner</p>
+                                    </div>
+                                </div>
+                                <div class="team-member">
+                                    <div class="member-avatar">MR</div>
+                                    <div class="member-info">
+                                        <h4>Marcus Rodriguez</h4>
+                                        <p>Sustainability Engineer</p>
+                                    </div>
+                                </div>
+                                <div class="team-member">
+                                    <div class="member-avatar">SK</div>
+                                    <div class="member-info">
+                                        <h4>Sarah Kim</h4>
+                                        <p>Community Relations</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-sidebar">
+                        <div class="investment-card">
+                            <h3>Investment Details</h3>
+                            <div class="investment-info">
+                                <div class="info-row">
+                                    <span>Token Price</span>
+                                    <span class="info-value">$${project.tokenPrice}</span>
+                                </div>
+                                <div class="info-row">
+                                    <span>Tokens Available</span>
+                                    <span class="info-value">${project.tokensAvailable}</span>
+                                </div>
+                                <div class="info-row">
+                                    <span>Minimum Investment</span>
+                                    <span class="info-value">$${project.tokenPrice * 5} (5 tokens)</span>
+                                </div>
+                                <div class="info-row">
+                                    <span>Expected ROI</span>
+                                    <span class="info-value positive">${project.expectedROI}% annually</span>
+                                </div>
+                                <div class="info-row">
+                                    <span>Project Duration</span>
+                                    <span class="info-value">${project.duration} months</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary btn-lg invest-action-btn" id="investActionBtn">
+                                <i class="fas fa-coins"></i> Invest in This Project
+                            </button>
+                            <p class="investment-note">Tokens are non-refundable but tradable on secondary markets after 6 months.</p>
+                        </div>
+                        
+                        <div class="impact-card">
+                            <h3>Impact Metrics</h3>
+                            <div class="impact-metrics">
+                                <div class="impact-metric">
+                                    <div class="metric-icon">
+                                        <i class="fas fa-leaf"></i>
+                                    </div>
+                                    <div class="metric-details">
+                                        <span class="metric-value">${project.impact.co2Reduction} tons</span>
+                                        <span class="metric-label">CO₂ Reduced Annually</span>
+                                    </div>
+                                </div>
+                                <div class="impact-metric">
+                                    <div class="metric-icon">
+                                        <i class="fas fa-briefcase"></i>
+                                    </div>
+                                    <div class="metric-details">
+                                        <span class="metric-value">${project.impact.jobsCreated}</span>
+                                        <span class="metric-label">Local Jobs Created</span>
+                                    </div>
+                                </div>
+                                <div class="impact-metric">
+                                    <div class="metric-icon">
+                                        <i class="fas fa-bolt"></i>
+                                    </div>
+                                    <div class="metric-details">
+                                        <span class="metric-value">${project.impact.energySaved || '1,250'} MWh</span>
+                                        <span class="metric-label">Clean Energy Generated</span>
+                                    </div>
+                                </div>
+                                <div class="impact-metric">
+                                    <div class="metric-icon">
+                                        <i class="fas fa-home"></i>
+                                    </div>
+                                    <div class="metric-details">
+                                        <span class="metric-value">${project.impact.householdsBenefited || '180'}</span>
+                                        <span class="metric-label">Households Benefited</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Add event listener to invest button
+            document.getElementById('investActionBtn').addEventListener('click', function() {
+                openInvestmentModal(project);
+            });
+        }
+        
+        function loadSimilarProjects(currentProjectId) {
+            const container = document.getElementById('similarProjects');
+            if (!container) return;
+            
+            // Find current project
+            const currentProject = window.urbanStakeData.projects.find(p => p.id === currentProjectId);
+            if (!currentProject) return;
+            
+            // Find similar projects (same category, excluding current)
+            const similarProjects = window.urbanStakeData.projects
+                .filter(p => p.id !== currentProjectId && p.category === currentProject.category)
+                .slice(0, 3);
+            
+            if (similarProjects.length === 0) {
+                container.innerHTML = '<p>No similar projects found.</p>';
+                return;
+            }
+            
+            container.innerHTML = '';
+            similarProjects.forEach(project => {
+                const projectCard = createSimilarProjectCard(project);
+                container.appendChild(projectCard);
+            });
+        }
+        
+        function createSimilarProjectCard(project) {
+            const card = document.createElement('div');
+            card.className = 'project-card';
+            card.innerHTML = `
+                <div class="project-card-header">
+                    <span class="project-category">${project.category}</span>
+                    <span class="project-funding">${project.fundedPercent}% funded</span>
+                </div>
+                <div class="project-card-body">
+                    <h3>${project.title}</h3>
+                    <p class="project-location"><i class="fas fa-map-marker-alt"></i> ${project.location}</p>
+                    <p class="project-description">${project.description.substring(0, 80)}...</p>
+                </div>
+                <div class="project-card-footer">
+                    <div class="token-info">
+                        <span class="token-price">$${project.tokenPrice}/token</span>
+                    </div>
+                    <a href="project-details.html?id=${project.id}" class="btn btn-outline btn-sm">View Details</a>
+                </div>
+            `;
+            return card;
+        }
+        
+        function setupInvestmentModal() {
+            const modal = document.getElementById('investmentModal');
+            const investActionBtn = document.getElementById('investActionBtn');
+            const modalClose = document.getElementById('modalClose');
+            const cancelInvest = document.getElementById('cancelInvest');
+            const confirmInvest = document.getElementById('confirmInvest');
+            const tokenAmountInput = document.getElementById('tokenAmount');
+            const tokenSlider = document.getElementById('tokenSlider');
+            const presetButtons = document.querySelectorAll('.preset-btn');
+            
+            // Open modal (will be called from invest button)
+            window.openInvestmentModal = function(project) {
+                // Update modal with project details
+                document.getElementById('modalTokenPrice').textContent = `$${project.tokenPrice}`;
+                
+                // Set max tokens to available or 100
+                const maxTokens = Math.min(project.tokensAvailable, 100);
+                tokenSlider.max = maxTokens;
+                tokenAmountInput.max = maxTokens;
+                
+                // Update slider labels
+                document.querySelector('.slider-labels span:last-child').textContent = maxTokens;
+                
+                // Update investment summary
+                document.getElementById('investmentSummary').innerHTML = `
+                    <h4>${project.title}</h4>
+                    <p>${project.location}</p>
+                `;
+                
+                // Calculate initial total
+                updateInvestmentTotal();
+                
+                // Show modal
+                modal.classList.add('active');
+            };
+            
+            // Close modal
+            function closeModal() {
+                modal.classList.remove('active');
+            }
+            
+            // Event listeners
+            if (modalClose) modalClose.addEventListener('click', closeModal);
+            if (cancelInvest) cancelInvest.addEventListener('click', closeModal);
+            
+            // Close modal when clicking outside
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+            
+            // Confirm investment
+            if (confirmInvest) {
+                confirmInvest.addEventListener('click', function() {
+                    const tokenAmount = parseInt(tokenAmountInput.value);
+                    const tokenPrice = parseFloat(document.getElementById('modalTokenPrice').textContent.replace('$', ''));
+                    const totalAmount = tokenAmount * tokenPrice;
+                    const projectTitle = document.querySelector('#investmentSummary h4').textContent;
+                    
+                    // Save investment to localStorage
+                    const investment = {
+                        projectId: getProjectIdFromUrl(),
+                        projectTitle: projectTitle,
+                        tokensBought: tokenAmount,
+                        amount: totalAmount,
+                        date: new Date().toISOString(),
+                        tokenPrice: tokenPrice
+                    };
+                    
+                    // Get existing investments
+                    let investments = JSON.parse(localStorage.getItem('urbanstake_investments') || '[]');
+                    investments.push(investment);
+                    localStorage.setItem('urbanstake_investments', JSON.stringify(investments));
+                    
+                    // Update user balance
+                    let userData = JSON.parse(localStorage.getItem('urbanstake_user') || '{}');
+                    if (!userData.balance) userData.balance = 5000;
+                    userData.balance -= totalAmount;
+                    localStorage.setItem('urbanstake_user', JSON.stringify(userData));
+                    
+                    closeModal();
+                    showNotification(`Successfully invested $${totalAmount} in ${projectTitle}!`, 'success');
+                    
+                    // Update project funding (in demo data)
+                    const projectId = getProjectIdFromUrl();
+                    const projectIndex = window.urbanStakeData.projects.findIndex(p => p.id === projectId);
+                    if (projectIndex !== -1) {
+                        const project = window.urbanStakeData.projects[projectIndex];
+                        project.tokensAvailable -= tokenAmount;
+                        project.fundedPercent = Math.min(100, ((project.totalTokens - project.tokensAvailable) / project.totalTokens * 100).toFixed(1));
+                        
+                        // Update display
+                        setTimeout(() => {
+                            loadProjectDetails(projectId);
+                        }, 500);
+                    }
+                });
+            }
+            
+            // Update total when token amount changes
+            function updateInvestmentTotal() {
+                const tokenAmount = parseInt(tokenAmountInput.value);
+                const tokenPrice = parseFloat(document.getElementById('modalTokenPrice').textContent.replace('$', ''));
+                const totalAmount = tokenAmount * tokenPrice;
+                
+                document.getElementById('modalTokenAmount').textContent = tokenAmount;
+                document.getElementById('modalTotalAmount').textContent = `$${totalAmount}`;
+                
+                // Update slider to match input
+                tokenSlider.value = tokenAmount;
+            }
+            
+            // Link input and slider
+            tokenAmountInput.addEventListener('input', function() {
+                updateInvestmentTotal();
+            });
+            
+            tokenSlider.addEventListener('input', function() {
+                tokenAmountInput.value = this.value;
+                updateInvestmentTotal();
+            });
+            
+            // Preset buttons
+            presetButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const amount = parseInt(this.getAttribute('data-amount'));
+                    tokenAmountInput.value = amount;
+                    updateInvestmentTotal();
+                });
+            });
+        }
+        
+        function showNotification(message, type) {
+            // Same notification function as before
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.innerHTML = `
+                <span>${message}</span>
+                <button class="notification-close"><i class="fas fa-times"></i></button>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.classList.add('show');
+            }, 10);
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        document.body.removeChild(notification);
+                    }
+                }, 300);
+            }, 5000);
+            
+            notification.querySelector('.notification-close').addEventListener('click', function() {
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        document.body.removeChild(notification);
+                    }
+                }, 300);
+            });
+        }
+    </script>
+</body>
+</html>
