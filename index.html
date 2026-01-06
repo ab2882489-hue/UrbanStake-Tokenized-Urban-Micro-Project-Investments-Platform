@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UrbanStake | Tokenized Urban Micro-Project Investments</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-city"></i>
+                <span>UrbanStake</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="marketplace.html" class="nav-link">Marketplace</a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="analytics.html" class="nav-link">Analytics</a>
+                <button class="btn btn-outline" id="connectWallet">Connect Wallet</button>
+                <div class="user-menu">
+                    <span class="user-avatar">U</span>
+                    <span class="user-name">User123</span>
+                </div>
+            </div>
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Invest in Your City's Future</h1>
+                <p class="hero-subtitle">Tokenized micro-projects that transform urban spaces. Own a piece of the change you want to see.</p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-value">127</span>
+                        <span class="stat-label">Projects Funded</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">$4.2M</span>
+                        <span class="stat-label">Total Invested</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">8,450</span>
+                        <span class="stat-label">Token Holders</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">24.7k</span>
+                        <span class="stat-label">Tons CO₂ Reduced</span>
+                    </div>
+                </div>
+                <div class="hero-actions">
+                    <a href="marketplace.html" class="btn btn-primary btn-lg">
+                        <i class="fas fa-coins"></i> Explore Projects
+                    </a>
+                    <a href="#how-it-works" class="btn btn-outline btn-lg">
+                        <i class="fas fa-play-circle"></i> How It Works
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="floating-card card-1">
+                    <div class="card-header">
+                        <h4>Solar Rooftops</h4>
+                        <span class="token-badge">85% funded</span>
+                    </div>
+                    <p>Brooklyn community solar initiative</p>
+                    <div class="card-footer">
+                        <span>$25 per token</span>
+                        <span>↑ 14%</span>
+                    </div>
+                </div>
+                <div class="floating-card card-2">
+                    <div class="card-header">
+                        <h4>Urban Gardens</h4>
+                        <span class="token-badge">62% funded</span>
+                    </div>
+                    <p>Chicago vacant lot transformation</p>
+                    <div class="card-footer">
+                        <span>$18 per token</span>
+                        <span>↑ 22%</span>
+                    </div>
+                </div>
+                <div class="floating-card card-3">
+                    <div class="card-header">
+                        <h4>EV Charging Hubs</h4>
+                        <span class="token-badge">93% funded</span>
+                    </div>
+                    <p>LA public EV infrastructure</p>
+                    <div class="card-footer">
+                        <span>$42 per token</span>
+                        <span>↑ 8%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="section" id="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How UrbanStake Works</h2>
+            <p class="section-subtitle">Three simple steps to invest in urban transformation</p>
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>1. Browse Projects</h3>
+                    <p>Explore vetted urban micro-projects in your city or globally. Each project is tokenized for fractional ownership.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-hand-holding-usd"></i>
+                    </div>
+                    <h3>2. Invest Tokens</h3>
+                    <p>Purchase tokens representing fractional ownership in projects. Start with as little as $10 per token.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>3. Track Impact</h3>
+                    <p>Monitor your investment growth and the real-world impact through our detailed analytics dashboard.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Projects -->
+    <section class="section bg-light">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Featured Projects</h2>
+                <a href="marketplace.html" class="btn-link">View All <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="projects-grid" id="featuredProjects">
+                <!-- Featured projects will be loaded by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Stats -->
+    <section class="section impact-stats">
+        <div class="container">
+            <h2 class="section-title">Collective Impact</h2>
+            <p class="section-subtitle">Real results from UrbanStake investments</p>
+            <div class="stats-grid">
+                <div class="impact-stat">
+                    <i class="fas fa-leaf"></i>
+                    <h3>24,700</h3>
+                    <p>Tons of CO₂ Reduced</p>
+                </div>
+                <div class="impact-stat">
+                    <i class="fas fa-bolt"></i>
+                    <h3>18.4M</h3>
+                    <p>kWh Clean Energy Generated</p>
+                </div>
+                <div class="impact-stat">
+                    <i class="fas fa-briefcase"></i>
+                    <h3>420</h3>
+                    <p>Local Jobs Created</p>
+                </div>
+                <div class="impact-stat">
+                    <i class="fas fa-home"></i>
+                    <h3>3,150</h3>
+                    <p>Households Benefited</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Invest in Urban Transformation?</h2>
+                <p>Join thousands of urban stakeholders making a profit while making a difference.</p>
+                <a href="marketplace.html" class="btn btn-primary btn-lg">
+                    <i class="fas fa-rocket"></i> Start Investing Now
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <i class="fas fa-city"></i>
+                        <span>UrbanStake</span>
+                    </a>
+                    <p>Democratizing urban development through tokenized micro-project investments.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Platform</h4>
+                        <a href="marketplace.html">Marketplace</a>
+                        <a href="dashboard.html">Dashboard</a>
+                        <a href="analytics.html">Analytics</a>
+                        <a href="#">How It Works</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Resources</h4>
+                        <a href="#">Documentation</a>
+                        <a href="#">Blog</a>
+                        <a href="#">FAQ</a>
+                        <a href="#">Support</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <a href="#">Terms of Service</a>
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Risk Disclosure</a>
+                        <a href="#">Token Agreement</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 UrbanStake. All rights reserved. This is a demo project for hackathon presentation.</p>
+                <p class="disclaimer">UrbanStake is a demonstration platform. Investments shown are simulated and for presentation purposes only.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        // Initialize the app
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load featured projects
+            loadFeaturedProjects();
+            
+            // Setup wallet connection
+            document.getElementById('connectWallet').addEventListener('click', function() {
+                this.textContent = 'Wallet Connected';
+                this.classList.add('connected');
+                showNotification('Wallet connected successfully!', 'success');
+            });
+            
+            // Mobile menu toggle
+            document.getElementById('menuToggle').addEventListener('click', function() {
+                document.querySelector('.nav-links').classList.toggle('active');
+            });
+        });
+        
+        function loadFeaturedProjects() {
+            const featuredContainer = document.getElementById('featuredProjects');
+            if (!featuredContainer) return;
+            
+            // Get featured projects from data
+            const featuredProjects = window.urbanStakeData.projects.slice(0, 3);
+            
+            featuredProjects.forEach(project => {
+                const projectCard = createProjectCard(project);
+                featuredContainer.appendChild(projectCard);
+            });
+        }
+        
+        function createProjectCard(project) {
+            const card = document.createElement('div');
+            card.className = 'project-card';
+            card.innerHTML = `
+                <div class="project-card-header">
+                    <span class="project-category">${project.category}</span>
+                    <span class="project-funding">${project.fundedPercent}% funded</span>
+                </div>
+                <div class="project-card-body">
+                    <h3>${project.title}</h3>
+                    <p class="project-location"><i class="fas fa-map-marker-alt"></i> ${project.location}</p>
+                    <p class="project-description">${project.description.substring(0, 100)}...</p>
+                    <div class="project-impact">
+                        <div class="impact-item">
+                            <i class="fas fa-leaf"></i>
+                            <span>${project.impact.co2Reduction} tons CO₂/year</span>
+                        </div>
+                        <div class="impact-item">
+                            <i class="fas fa-briefcase"></i>
+                            <span>${project.impact.jobsCreated} jobs</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card-footer">
+                    <div class="token-info">
+                        <span class="token-price">$${project.tokenPrice}/token</span>
+                        <span class="token-available">${project.tokensAvailable} tokens left</span>
+                    </div>
+                    <a href="project-details.html?id=${project.id}" class="btn btn-outline btn-sm">View Details</a>
+                </div>
+            `;
+            return card;
+        }
+        
+        function showNotification(message, type) {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.innerHTML = `
+                <span>${message}</span>
+                <button class="notification-close"><i class="fas fa-times"></i></button>
+            `;
+            
+            // Add to page
+            document.body.appendChild(notification);
+            
+            // Show notification
+            setTimeout(() => {
+                notification.classList.add('show');
+            }, 10);
+            
+            // Auto remove after 5 seconds
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        document.body.removeChild(notification);
+                    }
+                }, 300);
+            }, 5000);
+            
+            // Close button event
+            notification.querySelector('.notification-close').addEventListener('click', function() {
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        document.body.removeChild(notification);
+                    }
+                }, 300);
+            });
+        }
+    </script>
+</body>
+</html>
