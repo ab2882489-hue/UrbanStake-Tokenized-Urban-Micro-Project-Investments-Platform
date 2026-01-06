@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investment Dashboard | UrbanStake</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-city"></i>
+                <span>UrbanStake</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="marketplace.html" class="nav-link">Marketplace</a>
+                <a href="dashboard.html" class="nav-link active">Dashboard</a>
+                <a href="analytics.html" class="nav-link">Analytics</a>
+                <button class="btn btn-outline" id="connectWallet">Connect Wallet</button>
+                <div class="user-menu">
+                    <span class="user-avatar">U</span>
+                    <span class="user-name">User123</span>
+                </div>
+            </div>
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Dashboard Header -->
+    <section class="section dashboard-header">
+        <div class="container">
+            <div class="dashboard-header-content">
+                <h1>Investment Dashboard</h1>
+                <p>Track your token holdings, investment performance, and impact contributions</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Stats -->
+    <section class="section">
+        <div class="container">
+            <div class="dashboard-stats" id="dashboardStats">
+                <div class="dashboard-stat">
+                    <div class="stat-icon">
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <div class="stat-content">
+                        <span class="stat-label">Portfolio Value</span>
+                        <span class="stat-value" id="portfolioValue">$0</span>
+                    </div>
+                </div>
+                <div class="dashboard-stat">
+                    <div class="stat-icon">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <div class="stat-content">
+                        <span class="stat-label">Total Tokens</span>
+                        <span class="stat-value" id="totalTokens">0</span>
+                    </div>
+                </div>
+                <div class="dashboard-stat">
+                    <div class="stat-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <div class="stat-content">
+                        <span class="stat-label">Active Projects</span>
+                        <span class="stat-value" id="activeProjects">0</span>
+                    </div>
+                </div>
+                <div class="dashboard-stat">
+                    <div class="stat-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div class="stat-content">
+                        <span class="stat-label">CO₂ Reduced</span>
+                        <span class="stat-value" id="co2Reduced">0 tons</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Overview -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Your Portfolio</h2>
+                <div class="portfolio-actions">
+                    <button class="btn btn-outline" id="addFunds">
+                        <i class="fas fa-plus-circle"></i> Add Funds
+                    </button>
+                    <button class="btn btn-outline" id="withdrawFunds">
+                        <i class="fas fa-download"></i> Withdraw
+                    </button>
+                </div>
+            </div>
+            
+            <div class="portfolio-container">
+                <div class="portfolio-chart">
+                    <h3>Portfolio Distribution</h3>
+                    <div class="chart-placeholder" id="portfolioChart">
+                        <div class="chart-legend">
+                            <!-- Legend will be populated by JavaScript -->
+                        </div>
+                        <div class="chart-visual">
+                            <!-- Chart will be visualized with CSS -->
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="wallet-balance">
+                    <h3>Wallet Balance</h3>
+                    <div class="balance-card">
+                        <div class="balance-amount" id="walletBalance">$5,000</div>
+                        <div class="balance-details">
+                            <div class="detail-row">
+                                <span>Available</span>
+                                <span id="availableBalance">$5,000</span>
+                            </div>
+                            <div class="detail-row">
+                                <span>Invested</span>
+                                <span id="investedBalance">$0</span>
+                            </div>
+                            <div class="detail-row">
+                                <span>Returns</span>
+                                <span class="positive" id="totalReturns">$0</span>
+                            </div>
+                        </div>
+                        <div class="balance-actions">
+                            <button class="btn btn-primary" id="quickInvest">
+                                <i class="fas fa-bolt"></i> Quick Invest
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Investment History -->
+    <section class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Investment History</h2>
+            <div class="table-responsive">
+                <table class="investments-table">
+                    <thead>
+                        <tr>
+                            <th>Project</th>
+                            <th>Date</th>
+                            <th>Tokens</th>
+                            <th>Amount</th>
+                            <th>Current Value</th>
+                            <th>ROI</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="investmentsTable">
+                        <!-- Investments will be loaded by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="no-data" id="noInvestments">
+                <i class="fas fa-coins"></i>
+                <h3>No Investments Yet</h3>
+                <p>You haven't made any investments yet. <a href="marketplace.html">Browse projects</a> to get started.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Your Impact -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Your Impact</h2>
+            <div class="impact-cards" id="yourImpact">
+                <div class="impact-card personal-impact">
+                    <div class="impact-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div class="impact-content">
+                        <h3>CO₂ Reduction</h3>
+                        <div class="impact-value" id="personalCO2">0 tons</div>
+                        <p class="impact-description">Equivalent to taking <span id="carsOffRoad">0</span> cars off the road for a year</p>
+                    </div>
+                </div>
+                <div class="impact-card personal-impact">
+                    <div class="impact-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div class="impact-content">
+                        <h3>Clean Energy</h3>
+                        <div class="impact-value" id="personalEnergy">0 MWh</div>
+                        <p class="impact-description">Enough to power <span id="homesPowered">0</span> homes for a month</p>
+                    </div>
+                </div>
+                <div class="impact-card personal-impact">
+                    <div class="impact-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="impact-content">
+                        <h3>Jobs Supported</h3>
+                        <div class="impact-value" id="personalJobs">0</div>
+                        <p class="impact-description">Local jobs created through your investments</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <i class="fas fa-city"></i>
+                        <span>UrbanStake</span>
+                    </a>
+                    <p>Democratizing urban development through tokenized micro-project investments.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Platform</h4>
+                        <a href="marketplace.html">Marketplace</a>
+                        <a href="dashboard.html">Dashboard</a>
+                        <a href="analytics.html">Analytics</a>
+                        <a href="#">How It Works</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Resources</h4>
+                        <a href="#">Documentation</a>
+                        <a href="#">Blog</a>
+                        <a href="#">FAQ</a>
+                        <a href="#">Support</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <a href="#">Terms of Service</a>
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Risk Disclosure</a>
+                        <a href="#">Token Agreement</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 UrbanStake. All rights reserved. This is a demo project for hackathon presentation.</p>
+                <p class="disclaimer">UrbanStake is a demonstration platform. Investments shown are simulated and for presentation purposes only.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        // Initialize the dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load dashboard data
+            loadDashboardData();
+            
+            // Setup wallet connection
+            document.getElementById('connectWallet').addEventListener('click', function() {
+                this.textContent = 'Wallet Connected';
+                this.classList.add('connected');
+                showNotification('Wallet connected successfully!', 'success');
+            });
+            
+            // Mobile menu toggle
+            document.getElementById('menuToggle').addEventListener('click', function() {
+                document.querySelector('.nav-links').classList.toggle('active');
+            });
+            
+            // Setup button actions
+            document.getElementById('addFunds').addEventListener('click', addFunds);
+            document.getElementById('withdrawFunds').addEventListener('click', withdrawFunds);
+            document.getElementById('quickInvest').addEventListener('click', quickInvest);
+        });
+        
+        function loadDashboardData() {
+            // Get investments from localStorage
+            const investments = JSON.parse(localStorage.getItem('urbanstake_investments') || '[]');
+            
+            // Get user data
+            let userData = JSON.parse(localStorage.getItem('urbanstake_user') || '{}');
+            if (!userData.balance) {
+                userData.balance = 5000;
+                userData.invested = 0;
+                localStorage.setItem('urbanstake_user', JSON.stringify(userData));
+            }
+            
+            // Calculate dashboard stats
+            let totalTokens = 0;
+            let portfolioValue = 0;
+            let investedBalance = 0;
+            let totalReturns = 0;
+            let projectIds = new Set();
+            
+            // Personal impact metrics
+            let personalCO2 = 0;
+            let personalEnergy = 0;
+            let personalJobs = 0;
+            
+            investments.forEach(investment => {
+                totalTokens += investment.tokensBought;
+                investedBalance += investment.amount;
+                
+                // Calculate current value with ROI
+                const project = window.urbanStakeData.projects.find(p => p.id === investment.projectId);
+                if (project) {
+                    projectIds.add(project.id);
+                    
+                    // Simple ROI calculation (10% of investment as placeholder)
+                    const returns = investment.amount * 0.1;
+                    totalReturns += returns;
+                    portfolioValue += investment.amount + returns;
+                    
+                    // Calculate personal impact
+                    const tokensPercentage = investment.tokensBought / project.totalTokens;
+                    personalCO2 += project.impact.co2Reduction * tokensPercentage;
+                    personalEnergy += (project.impact.energySaved || 1250) * tokensPercentage;
+                    personalJobs += project.impact.jobsCreated * tokensPercentage;
+                }
+            });
+            
+            // Update dashboard stats
+            document.getElementById('portfolioValue').textContent = `$${portfolioValue.toFixed(0)}`;
+            document.getElementById('totalTokens').textContent = totalTokens;
+            document.getElementById('activeProjects').textContent = projectIds.size;
+            document.getElementById('co2Reduced').textContent = `${personalCO2.toFixed(1)} tons`;
+            
+            // Update wallet balance
+            const availableBalance = userData.balance;
+            document.getElementById('walletBalance').textContent = `$${availableBalance.toLocaleString()}`;
+            document.getElementById('availableBalance').textContent = `$${availableBalance.toLocaleString()}`;
+            document.getElementById('investedBalance').textContent = `$${investedBalance.toLocaleString()}`;
+            document.getElementById('totalReturns').textContent = `$${totalReturns.toFixed(0)}`;
+            
+            // Update personal impact
+            document.getElementById('personalCO2').textContent = `${personalCO2.toFixed(1)} tons`;
+            document.getElementById('personalEnergy').textContent = `${personalEnergy.toFixed(0)} MWh`;
+            document.getElementById('personalJobs').textContent = personalJobs.toFixed(1);
+            
+            // Calculate equivalents
+            document.getElementById('carsOffRoad').textContent = Math.round(personalCO2 / 4.6); // Average car emits 4.6 tons/year
+            document.getElementById('homesPowered').textContent = Math.round(personalEnergy / 0.9); // Average home uses 0.9 MWh/month
+            
+            // Load investment history table
+            loadInvestmentHistory(investments);
+            
+            // Create portfolio chart
+            createPortfolioChart(investments);
+            
+            // Show/hide no data message
+            if (investments.length === 0) {
+                document.getElementById('noInvestments').style.display = 'flex';
+            } else {
+                document.getElementById('noInvestments').style.display = 'none';
+            }
+        }
+        
+        function loadInvestmentHistory(investments) {
+            const tableBody = document.getElementById('investmentsTable');
+            if (!tableBody) return;
+            
+            // Clear existing rows
+            tableBody.innerHTML = '';
+            
+            if (investments.length === 0) return;
+            
+            // Sort by date (newest first)
+            investments.sort((a, b) => new Date(b.date) - new Date(a.date));
+            
+            // Add investment rows
+            investments.forEach(investment => {
+                const project = window.urbanStakeData.projects.find(p => p.id === investment.projectId);
+                if (!project) return;
+                
+                const date = new Date(investment.date).toLocaleDateString('en-US');
+                const currentValue = investment.amount * 1.1; // 10% ROI
+                const roi = ((currentValue - investment.amount) / investment.amount * 100).toFixed(1);
+                const status = project.fundedPercent >= 100 ? 'Fully Funded' : 'Active';
+                
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>
+                        <div class="project-cell">
+                            <div class="project-avatar">${project.title.charAt(0)}</div>
+                            <div class="project-info">
+                                <div class="project-name">${project.title}</div>
+                                <div class="project-category">${project.category}</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>${date}</td>
+                    <td>${investment.tokensBought}</td>
+                    <td>$${investment.amount.toFixed(0)}</td>
+                    <td>$${currentValue.toFixed(0)}</td>
+                    <td class="${roi >= 0 ? 'positive' : 'negative'}">${roi}%</td>
+                    <td><span class="status-badge ${status === 'Active' ? 'active' : 'completed'}">${status}</span></td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+        
+        function createPortfolioChart(investments) {
+            const chartVisual = document.querySelector('.chart-visual');
+            const chartLegend = document.querySelector('.chart-legend');
+            
+            if (!chartVisual || !chartLegend || investments.length === 0) {
+                chartVisual.innerHTML = '<div class="no-chart-data">No investment data to display</div>';
+                return;
+            }
+            
+            // Group investments by project
+            const investmentByProject = {};
+            investments.forEach(investment => {
+                const project = window.urbanStakeData.projects.find(p => p.id === investment.projectId);
+                if (project) {
+                    if (!investmentByProject[project.title]) {
+                        investmentByProject[project.title] = {
+                            amount: 0,
+                            color: getRandomColor(),
+                            project: project
+                        };
+                    }
+                    investmentByProject[project.title].amount += investment.amount;
+                }
+            });
+            
+            // Create chart
+            const projects = Object.keys(investmentByProject);
+            const totalAmount = Object.values(investmentByProject).reduce((sum, item) => sum + item.amount, 0);
+            
+            // Create pie chart using CSS conic-gradient
+            let gradientString = 'conic-gradient(';
+            let currentAngle = 0;
+            
+            projects.forEach((project, index) => {
+                const percentage = (investmentByProject[project].amount / totalAmount) * 100;
+                const angle = (percentage / 100) * 360;
+                
+                gradientString += `${investmentByProject[project].color} ${currentAngle}deg ${currentAngle + angle}deg`;
+                
+                if (index < projects.length - 1) {
+                    gradientString += ', ';
+                }
+                
+                currentAngle += angle;
+            });
+            
+            gradientString += ')';
+            
+            chartVisual.style.background = gradientString;
+            
+            // Create legend
+            chartLegend.innerHTML = '';
+            projects.forEach(project => {
+                const percentage = ((investmentByProject[project].amount / totalAmount) * 100).toFixed(1);
+                const legendItem = document.createElement('div');
+                legendItem.className = 'legend-item';
+                legendItem.innerHTML = `
+                    <div class="legend-color" style="background-color: ${investmentByProject[project].color}"></div>
+                    <div class="legend-text">
+                        <span class="legend-label">${project}</span>
+                        <span class="legend-value">${percentage}% ($${investmentByProject[project].amount.toFixed(0)})</span>
+                    </div>
+                `;
+                chartLegend.appendChild(legendItem);
+            });
+        }
+        
+        function getRandomColor() {
+            const colors = [
+                '#4F46E5', '#10B981', '#F59E0B', '#EF4444', 
+                '#8B5CF6', '#06B6D4', '#84CC16', '#F97316'
+            ];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+        
+        function addFunds() {
+            showNotification('Demo: Adding $1,000 to your wallet balance', 'info');
+            
+            // Update user balance in localStorage
+            let userData = JSON.parse(localStorage.getItem('urbanstake_user') || '{}');
+            userData.balance = (userData.balance || 0) + 1000;
+            localStorage.setItem('urbanstake_user', JSON.stringify(userData));
+            
+            // Reload dashboard data
+            setTimeout(() => {
+                loadDashboardData();
+            }, 500);
+        }
+        
+        function withdrawFunds() {
+            showNotification('Withdrawal functionality would connect to your wallet in a live implementation.', 'info');
+        }
+        
+        function quickInvest() {
+            showNotification('Redirecting to marketplace for quick investment...', 'info');
+            setTimeout(() => {
+                window.location.href = 'marketplace.html';
+            }, 1000);
+        }
+        
+        function showNotification(message, type) {
+            // Same notification function as before
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.innerHTML = `
+                <span>${message}</span>
+                <button class="notification-close"><i class="fas fa-times"></i></button>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.classList.add('show');
+            }, 10);
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        document.body.removeChild(notification);
+                    }
+                }, 300);
+            }, 5000);
+            
+            notification.querySelector('.notification-close').addEventListener('click', function() {
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        document.body.removeChild(notification);
+                    }
+                }, 300);
+            });
+        }
+    </script>
+</body>
+</html>
