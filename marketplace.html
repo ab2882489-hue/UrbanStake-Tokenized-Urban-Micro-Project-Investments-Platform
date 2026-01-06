@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketplace | UrbanStake</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-city"></i>
+                <span>UrbanStake</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="marketplace.html" class="nav-link active">Marketplace</a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="analytics.html" class="nav-link">Analytics</a>
+                <button class="btn btn-outline" id="connectWallet">Connect Wallet</button>
+                <div class="user-menu">
+                    <span class="user-avatar">U</span>
+                    <span class="user-name">User123</span>
+                </div>
+            </div>
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Marketplace Header -->
+    <section class="section marketplace-header">
+        <div class="container">
+            <div class="marketplace-header-content">
+                <h1>Project Marketplace</h1>
+                <p>Browse and invest in tokenized urban micro-projects. Each token represents fractional ownership with real impact.</p>
+                <div class="marketplace-filters">
+                    <div class="filter-group">
+                        <label for="categoryFilter">Filter by Category:</label>
+                        <select id="categoryFilter" class="filter-select">
+                            <option value="all">All Categories</option>
+                            <option value="solar">Solar Energy</option>
+                            <option value="garden">Urban Gardens</option>
+                            <option value="ev">EV Infrastructure</option>
+                            <option value="waste">Waste Management</option>
+                            <option value="water">Water Conservation</option>
+                            <option value="housing">Affordable Housing</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="sortFilter">Sort by:</label>
+                        <select id="sortFilter" class="filter-select">
+                            <option value="newest">Newest First</option>
+                            <option value="funding">Funding Progress</option>
+                            <option value="price">Token Price</option>
+                            <option value="impact">Impact Score</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary" id="applyFilters">
+                        <i class="fas fa-filter"></i> Apply Filters
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Grid -->
+    <section class="section">
+        <div class="container">
+            <div class="marketplace-stats">
+                <div class="marketplace-stat">
+                    <span class="stat-label">Total Projects</span>
+                    <span class="stat-value" id="totalProjects">0</span>
+                </div>
+                <div class="marketplace-stat">
+                    <span class="stat-label">Total Value</span>
+                    <span class="stat-value" id="totalValue">$0</span>
+                </div>
+                <div class="marketplace-stat">
+                    <span class="stat-label">Avg. Token Price</span>
+                    <span class="stat-value" id="avgPrice">$0</span>
+                </div>
+                <div class="marketplace-stat">
+                    <span class="stat-label">Fully Funded</span>
+                    <span class="stat-value" id="fundedCount">0</span>
+                </div>
+            </div>
+            
+            <div class="projects-grid" id="projectsGrid">
+                <!-- Projects will be loaded by JavaScript -->
+            </div>
+            
+            <div class="load-more-container">
+                <button class="btn btn-outline" id="loadMore">
+                    <i class="fas fa-redo"></i> Load More Projects
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Invest -->
+    <section class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">How to Invest in Projects</h2>
+            <div class="invest-steps">
+                <div class="invest-step">
+                    <div class="step-number">1</div>
+                    <h3>Connect Wallet</h3>
+                    <p>Connect your digital wallet to start investing. Demo mode available for testing.</p>
+                </div>
+                <div class="invest-step">
+                    <div class="step-number">2</div>
+                    <h3>Browse Projects</h3>
+                    <p>Explore project details, impact metrics, and token economics.</p>
+                </div>
+                <div class="invest-step">
+                    <div class="step-number">3</div>
+                    <h3>Purchase Tokens</h3>
+                    <p>Buy tokens representing fractional ownership in the project.</p>
+                </div>
+                <div class="invest-step">
+                    <div class="step-number">4</div>
+                    <h3>Track & Earn</h3>
+                    <p>Monitor your investment growth and impact through your dashboard.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <i class="fas fa-city"></i>
+                        <span>UrbanStake</span>
+                    </a>
+                    <p>Democratizing urban development through tokenized micro-project investments.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Platform</h4>
+                        <a href="marketplace.html">Marketplace</a>
+                        <a href="dashboard.html">Dashboard</a>
+                        <a href="analytics.html">Analytics</a>
+                        <a href="#">How It Works</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Resources</h4>
+                        <a href="#">Documentation</a>
+                        <a href="#">Blog</a>
+                        <a href="#">FAQ</a>
+                        <a href="#">Support</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <a href="#">Terms of Service</a>
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Risk Disclosure</a>
+                        <a href="#">Token Agreement</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 UrbanStake. All rights reserved. This is a demo project for hackathon presentation.</p>
+                <p class="disclaimer">UrbanStake is a demonstration platform. Investments shown are simulated and for presentation purposes only.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        // Initialize the marketplace
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load all projects
+            loadAllProjects();
+            
+            // Setup wallet connection
+            document.getElementById('connectWallet').addEventListener('click', function() {
+                this.textContent = 'Wallet Connected';
+                this.classList.add('connected');
+                showNotification('Wallet connected successfully!', 'success');
+            });
+            
+            // Mobile menu toggle
+            document.getElementById('menuToggle').addEventListener('click', function() {
+                document.querySelector('.nav-links').classList.toggle('active');
+            });
+            
+            // Filter functionality
+            document.getElementById('applyFilters').addEventListener('click', applyFilters);
+            
+            // Load more functionality
+            document.getElementById('loadMore').addEventListener('click', loadMoreProjects);
+        });
+        
+        let displayedProjects = 6;
+        
+        function loadAllProjects() {
+            const projectsGrid = document.getElementById('projectsGrid');
+            if (!projectsGrid) return;
+            
+            // Clear existing content
+            projectsGrid.innerHTML = '';
+            
+            // Get projects from data
+            const projects = window.urbanStakeData.projects;
+            
+            // Display first 6 projects
+            const projectsToShow = projects.slice(0, displayedProjects);
+            
+            projectsToShow.forEach(project => {
+                const projectCard = createMarketplaceProjectCard(project);
+                projectsGrid.appendChild(projectCard);
+            });
+            
+            // Update stats
+            updateMarketplaceStats(projects);
+        }
+        
+        function createMarketplaceProjectCard(project) {
+            const card = document.createElement('div');
+            card.className = 'project-card marketplace-card';
+            card.innerHTML = `
+                <div class="project-card-header">
+                    <span class="project-category">${project.category}</span>
+                    <div class="funding-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: ${project.fundedPercent}%"></div>
+                        </div>
+                        <span class="funding-percent">${project.fundedPercent}% funded</span>
+                    </div>
+                </div>
+                <div class="project-card-body">
+                    <h3>${project.title}</h3>
+                    <p class="project-location"><i class="fas fa-map-marker-alt"></i> ${project.location}</p>
+                    <p class="project-description">${project.description.substring(0, 120)}...</p>
+                    <div class="project-metrics">
+                        <div class="metric">
+                            <span class="metric-label">Token Price</span>
+                            <span class="metric-value">$${project.tokenPrice}</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">Tokens Left</span>
+                            <span class="metric-value">${project.tokensAvailable}</span>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-label">Total Value</span>
+                            <span class="metric-value">$${project.totalValue.toLocaleString()}</span>
+                        </div>
+                    </div>
+                    <div class="project-impact-badges">
+                        <span class="impact-badge"><i class="fas fa-leaf"></i> ${project.impact.co2Reduction} tons CO₂</span>
+                        <span class="impact-badge"><i class="fas fa-briefcase"></i> ${project.impact.jobsCreated} jobs</span>
+                        ${project.impact.energySaved ? `<span class="impact-badge"><i class="fas fa-bolt"></i> ${project.impact.energySaved} MWh</span>` : ''}
+                    </div>
+                </div>
+                <div class="project-card-footer">
+                    <a href="project-details.html?id=${project.id}" class="btn btn-primary">
+                        <i class="fas fa-chart-line"></i> View Details
+                    </a>
+                    <button class="btn btn-outline invest-btn" data-project-id="${project.id}">
+                        <i class="fas fa-coins"></i> Invest Now
+                    </button>
+                </div>
+            `;
+            
+            // Add invest button event
+            const investBtn = card.querySelector('.invest-btn');
+            investBtn.addEventListener('click', function() {
+                const projectId = this.getAttribute('data-project-id');
+                investInProject(projectId);
+            });
+            
+            return card;
+        }
+        
+        function updateMarketplaceStats(projects) {
+            const totalProjects = projects.length;
+            const totalValue = projects.reduce((sum, project) => sum + project.totalValue, 0);
+            const avgPrice = projects.reduce((sum, project) => sum + project.tokenPrice, 0) / totalProjects;
+            const fundedCount = projects.filter(project => project.fundedPercent >= 100).length;
+            
+            document.getElementById('totalProjects').textContent = totalProjects;
+            document.getElementById('totalValue').textContent = `$${totalValue.toLocaleString()}`;
+            document.getElementById('avgPrice').textContent = `$${avgPrice.toFixed(0)}`;
+            document.getElementById('fundedCount').textContent = fundedCount;
+        }
+        
+        function applyFilters() {
+            const categoryFilter = document.getElementById('categoryFilter').value;
+            const sortFilter = document.getElementById('sortFilter').value;
+            
+            let filteredProjects = [...window.urbanStakeData.projects];
+            
+            // Apply category filter
+            if (categoryFilter !== 'all') {
+                filteredProjects = filteredProjects.filter(project => 
+                    project.category.toLowerCase().includes(categoryFilter)
+                );
+            }
+            
+            // Apply sorting
+            switch(sortFilter) {
+                case 'newest':
+                    filteredProjects.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+                    break;
+                case 'funding':
+                    filteredProjects.sort((a, b) => b.fundedPercent - a.fundedPercent);
+                    break;
+                case 'price':
+                    filteredProjects.sort((a, b) => a.tokenPrice - b.tokenPrice);
+                    break;
+                case 'impact':
+                    filteredProjects.sort((a, b) => 
+                        (b.impact.co2Reduction + b.impact.jobsCreated * 10) - 
+                        (a.impact.co2Reduction + a.impact.jobsCreated * 10)
+                    );
+                    break;
+            }
+            
+            // Display filtered projects
+            const projectsGrid = document.getElementById('projectsGrid');
+            projectsGrid.innerHTML = '';
+            
+            const projectsToShow = filteredProjects.slice(0, displayedProjects);
+            
+            projectsToShow.forEach(project => {
+                const projectCard = createMarketplaceProjectCard(project);
+                projectsGrid.appendChild(projectCard);
+            });
+            
+            updateMarketplaceStats(filteredProjects);
+            showNotification(`Filtered ${filteredProjects.length} projects`, 'info');
+        }
+        
+        function loadMoreProjects() {
+            displayedProjects += 3;
+            applyFilters(); // This will reload with more projects
+            
+            // If we've shown all projects, hide the button
+            if (displayedProjects >= window.urbanStakeData.projects.length) {
+                document.getElementById('loadMore').style.display = 'none';
+            }
+        }
+        
+        function investInProject(projectId) {
+            showNotification('Redirecting to project details for investment...', 'info');
+            setTimeout(() => {
+                window.location.href = `project-details.html?id=${projectId}`;
+            }, 1000);
+        }
+        
+        function showNotification(message, type) {
+            // Same function as in index.html
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.innerHTML = `
+                <span>${message}</span>
+                <button class="notification-close"><i class="fas fa-times"></i></button>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.classList.add('show');
+            }, 10);
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        document.body.removeChild(notification);
+                    }
+                }, 300);
+            }, 5000);
+            
+            notification.querySelector('.notification-close').addEventListener('click', function() {
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        document.body.removeChild(notification);
+                    }
+                }, 300);
+            });
+        }
+    </script>
+</body>
+</html>
